@@ -14,52 +14,47 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+@RestController
+@CrossOrigin
+@RequestMapping("petsy's")
 public class PetsyController {
-	@RestController
-	@CrossOrigin
-	@RequestMapping("petsy's")
-	public class PetsyController {
 
-	    @Autowired
-	    PetsyService service;
+	@Autowired
+	PetsyService service;
 
-	    @GetMapping
-	    public List<GetPetsyDTO> findAll() {
-	        return service.findAll();
-	    }
-
-	    @GetMapping("/{id}")
-	    public PetsyService recupPetsyServiceId(@PathVariable String id) {
-	        return service.findById(id);
-	    }
-
-	    @GetMapping("{id}")
-	    public GetUsersDTO findById(@PathVariable String id) {
-	        return service.findById(id);
-	    }
-
-	    @GetMapping("/name/{name}")
-	    public Optional<User> findByNom(@PathVariable String name) {
-	        Optional<User> user = service.findByNom(name);
-	        return user;
-	    }
-
-	    @PostMapping
-	    public User save(@RequestBody User user) {
-	        return service.save(user);
-	    }
-
-	    @PutMapping
-	    public User edit(@RequestBody User user) {
-	        return service.save(user);
-	    }
-
-	    @DeleteMapping
-	    public void delete(@RequestBody User user) {
-	        service.delete(user);
-	    }
+	@GetMapping
+	public List<GetPetsyDTO> findAll() {
+		return service.findAll();
 	}
 
+	@GetMapping("/{id}")
+	public PetsyService recupPetsyServiceId(@PathVariable String id) {
+		return service.findById(id);
+	}
 
+	@GetMapping("{id}")
+	public GetUsersDTO findById(@PathVariable String id) {
+		return service.findById(id);
+	}
+
+	@GetMapping("/name/{name}")
+	public Optional<User> findByNom(@PathVariable String name) {
+		Optional<User> user = service.findByNom(name);
+		return user;
+	}
+
+	@PostMapping
+	public User save(@RequestBody User user) {
+		return service.save(user);
+	}
+
+	@PutMapping
+	public User edit(@RequestBody User user) {
+		return service.save(user);
+	}
+
+	@DeleteMapping
+	public void delete(@RequestBody User user) {
+		service.delete(user);
+	}
 }
