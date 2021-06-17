@@ -21,8 +21,9 @@ public class PetsyServiceImpl implements IPetsyService {
 	}
 
 	@Override
-	public Petsy create(Petsy petsy) {
-		return this.repository.save(petsy);
+	public PetsyDto create(Petsy petsy) {
+		this.repository.save(petsy);
+		return mapper.convertValue(petsy, PetsyDto.class);
 	}
 	
 	@Override
@@ -44,8 +45,10 @@ public class PetsyServiceImpl implements IPetsyService {
 	}
 
 	@Override
-	public Petsy update(String id, Petsy petsy) {
-		return this.repository.save(petsy);	}
+	public PetsyDto update(String id, Petsy petsy) {
+		this.repository.save(petsy);	
+		return this.mapper.convertValue(petsy, PetsyDto.class);
+	}
 
 	@Override
 	public void delete(String id) {
