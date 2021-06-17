@@ -13,10 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class User extends Personne{
 
-    @Id
-    String id;
-
-    String userName;
+    String username;
     String password;
 
     /*
