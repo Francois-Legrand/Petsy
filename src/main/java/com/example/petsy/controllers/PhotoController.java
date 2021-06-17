@@ -35,5 +35,4 @@ public class PhotoController {
         this.service.deleteById(id);
     }
 
-
 }
