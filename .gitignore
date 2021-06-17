@@ -231,3 +231,5 @@ fabric.properties
 hs_err_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,eclipse,java
+
+src/main/resources/application.properties
