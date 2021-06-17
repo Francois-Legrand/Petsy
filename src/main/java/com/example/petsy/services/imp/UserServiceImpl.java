@@ -32,7 +32,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public UsersDTO findById(Long id) {
+    public UsersDTO findById(String id) {
         return mapper.convertValue(this.repository.findById(id).get(), UsersDTO.class);
     }
 
@@ -43,7 +43,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(String id) {
         this.repository.deleteById(id);
     }
 }
