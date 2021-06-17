@@ -8,7 +8,7 @@ import java.util.List;
 public interface IUserService {
     List<UsersDTO> findAll();
     UsersDTO findById(String id);
-    //UsersDTO save(UsersDTO usersDTO);
+    UsersDTO saveDTO(UsersDTO usersDTO);
     User save(User user);
     void deleteById(String id);
 }

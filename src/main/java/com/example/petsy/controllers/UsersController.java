@@ -18,13 +18,17 @@ public class UsersController {
 
     @GetMapping
     public List<UsersDTO> findAll(){ return service.findAll();}
+
     @GetMapping("/{id}")
     public UsersDTO getUsername(@PathVariable String id){ return service.findById(id);}
-    @GetMapping("/name/{name}")
 
+    @GetMapping("/name/{name}")         //Warning:(26, 21) Method 'findByUsername()' recurses infinitely, and can only end by throwing an exception
     public UsersDTO findByUsername(@PathVariable String name){
         return findByUsername(name);
     }
+
+    @PostMapping("/saveDTO/")
+    public UsersDTO saveDTO(@RequestBody UsersDTO usersDTO) { return service.saveDTO(usersDTO);}
 
     @PostMapping
     public User save(@RequestBody User user){ return service.save(user);}
