@@ -14,7 +14,7 @@ public class Petsy {
 	private String contenu;
 	@DBRef
 	private Personne personne;
-	// constructor / getter /setter
+	@DBRef
 	private List<PetsyLikesComments> petsyLikesComments = new ArrayList<PetsyLikesComments>(); 
 	
 	public Petsy() {
@@ -26,7 +26,10 @@ public class Petsy {
 		this.id = id;
 		this.contenu = contenu;
 		this.personne = personne;
+		this.petsyLikesComments = petsyLikesComments;
 	}
+	
+
 	public String getId() {
 		return id;
 	}
@@ -44,6 +47,14 @@ public class Petsy {
 	}
 	public void setPersonne(Personne personne) {
 		this.personne = personne;
+	}
+	
+	public List<PetsyLikesComments> getPetsyLikesComments() {
+		return petsyLikesComments;
+	}
+
+	public void setPetsyLikesComments(List<PetsyLikesComments> petsyLikesComments) {
+		this.petsyLikesComments = petsyLikesComments;
 	}
 	
 

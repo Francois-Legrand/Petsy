@@ -14,47 +14,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.petsy.dto.PetsyDto;
+import com.example.petsy.models.Petsy;
+import com.example.petsy.services.IPetsyService;
+import com.example.petsy.services.imp.PetsyServiceImpl;
+
 @RestController
 @CrossOrigin
 @RequestMapping("petsy's")
 public class PetsyController {
 
 	@Autowired
-	PetsyService service;
+	PetsyServiceImpl service;
 
 	@GetMapping
-	public List<GetPetsyDTO> findAll() {
+	public List<PetsyDto> findAll() {
 		return service.findAll();
 	}
 
 	@GetMapping("/{id}")
-	public PetsyService recupPetsyServiceId(@PathVariable String id) {
+	public PetsyDto recupPetsyServiceId(@PathVariable String id) {
 		return service.findById(id);
-	}
-
-	@GetMapping("{id}")
-	public GetUsersDTO findById(@PathVariable String id) {
-		return service.findById(id);
-	}
-
-	@GetMapping("/name/{name}")
-	public Optional<User> findByNom(@PathVariable String name) {
-		Optional<User> user = service.findByNom(name);
-		return user;
-	}
-
-	@PostMapping
-	public User save(@RequestBody User user) {
-		return service.save(user);
 	}
 
 	@PutMapping
-	public User edit(@RequestBody User user) {
-		return service.save(user);
+	public PetsyDto create(@RequestBody Petsy petsy) {
+		return service.create(petsy);
 	}
 
 	@DeleteMapping
-	public void delete(@RequestBody User user) {
-		service.delete(user);
+	public void delete(@PathVariable String id) {
+		service.delete(id);
 	}
 }
