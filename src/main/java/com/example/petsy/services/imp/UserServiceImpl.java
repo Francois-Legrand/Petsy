@@ -35,12 +35,15 @@ public class UserServiceImpl implements IUserService {
     public UsersDTO findById(String id) {
         return mapper.convertValue(this.repository.findById(id).get(), UsersDTO.class);
     }
-
+/*
     @Override
     public UsersDTO save(UsersDTO usersDTO) {
         User user = mapper.convertValue(usersDTO, User.class);
         return mapper.convertValue(this.repository.save(user), UsersDTO.class);
     }
+*/
+    @Override
+    public User save(User user){return this.repository.save(user);}
 
     @Override
     public void deleteById(String id) {

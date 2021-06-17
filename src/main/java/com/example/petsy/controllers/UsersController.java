@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin
@@ -20,10 +21,15 @@ public class UsersController {
     public List<UsersDTO> findAll(){ return service.findAll();}
     @GetMapping("/{id}")
     public UsersDTO getUsername(@PathVariable String id){ return service.findById(id);}
+    @GetMapping("/name/{name}")
 
-    @PostMapping("")
+    public UsersDTO findByUsername(@PathVariable String name){
+        return findByUsername(name);
+    }
+
+    @PostMapping
     public User save(@RequestBody User user){ return service.save(user);}
 
-    @PutMapping("")
-    public User save(@RequestBody User user){ return service.save(user);}
+    @PutMapping
+    public User edit(@RequestBody User user){ return service.save(user);}
 }
