@@ -11,5 +11,5 @@ import com.example.petsy.models.Petsy;
 public interface PetsyRepository extends MongoRepository<Petsy, String> {
 	    List<Petsy> findByContenu(String contenu);
 	    List<Petsy> findByPersonne(Personne personne);
-	}
+}
 
