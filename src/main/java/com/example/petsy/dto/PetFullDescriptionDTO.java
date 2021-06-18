@@ -17,7 +17,7 @@ public class PetFullDescriptionDTO {
 	private int age;
 	private String sexe;
 	private String description;
-	private User User;
+	private User user;
 
 	public PetFullDescriptionDTO() {
 
@@ -72,11 +72,10 @@ public class PetFullDescriptionDTO {
 	}
 
 	public User getUser() {
-		return User;
+		return user;
 	}
 
 	public void setUser(User user) {
-		User = user;
+		this.user = user;
 	}
-
 }
