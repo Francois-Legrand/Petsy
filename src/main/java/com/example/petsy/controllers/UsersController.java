@@ -1,7 +1,6 @@
 package com.example.petsy.controllers;
 
 import com.example.petsy.dto.UsersDTO;
-import com.example.petsy.models.User;
 import com.example.petsy.services.imp.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +32,10 @@ public class UsersController {
     @PutMapping
     public UsersDTO edit(@RequestBody UsersDTO usersDTO) throws NoSuchAlgorithmException, InvalidKeySpecException {return service.save(usersDTO);}
 
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable String id) {
+        this.service.deleteById(id);
+    }
     /*
     @PostMapping
     public User save(@RequestBody User user) throws NoSuchAlgorithmException, InvalidKeySpecException { return service.save(user);}
