@@ -2,6 +2,7 @@ package com.example.petsy.config;
 
 import com.example.petsy.models.Pet;
 import com.example.petsy.repositories.*;
+import com.example.petsy.services.IEventService;
 import com.example.petsy.services.imp.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
@@ -31,5 +32,9 @@ public class Configs {
 	@Bean
 	PetsyLikesCommentsServiceImpl petsyLikesCommentsService(IPetsyLikesCommentsRepository petsyLikesCommentsRepository, ObjectMapper mapper){
 		return new PetsyLikesCommentsServiceImpl(petsyLikesCommentsRepository, mapper);
+	}
+	@Bean
+	EventServiceImpl eventService(IEventRepository eventRepository, ObjectMapper mapper){
+		return new EventServiceImpl(eventRepository, mapper);
 	}
 }

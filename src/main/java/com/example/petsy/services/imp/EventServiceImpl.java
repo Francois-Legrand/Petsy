@@ -32,6 +32,10 @@ public class EventServiceImpl implements IEventService {
         return mapper.convertValue(this.repository.findById(id).get(), EventDTO.class); //Warning:(32, 65) 'Optional.get()' without 'isPresent()' check
     }
 
+    public EventDTO findByTitle(String title) {
+        return mapper.convertValue(this.repository.findByTitle(title).get(), EventDTO.class); //Warning:(36, 71) 'Optional.get()' without 'isPresent()' check
+    }
+
     @Override
     public EventDTO save(EventDTO eventDTO) {
         Event event = mapper.convertValue(eventDTO, Event.class);
@@ -42,4 +46,6 @@ public class EventServiceImpl implements IEventService {
     public void deleteById(String id) {
         this.repository.deleteById(id);
     }
+
+
 }
