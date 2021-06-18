@@ -32,4 +32,8 @@ public class Configs {
 	PetsyLikesCommentsServiceImpl petsyLikesCommentsService(IPetsyLikesCommentsRepository petsyLikesCommentsRepository, ObjectMapper mapper){
 		return new PetsyLikesCommentsServiceImpl(petsyLikesCommentsRepository, mapper);
 	}
+	@Bean
+	UserMessageServiceImpl userMessageService(IUserMessageRepository userMessageRepository, ObjectMapper mapper){
+		return new UserMessageServiceImpl(userMessageRepository, mapper);
+	}
 }

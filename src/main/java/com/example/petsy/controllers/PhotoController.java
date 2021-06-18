@@ -44,10 +44,11 @@ public class PhotoController {
         this.service.deleteById(id);
     }
     @PostMapping("/uploadImage")
-    public String uploadImage(@PathVariable MultipartFile imageFile) {
+    public String uploadImage(@RequestBody @PathVariable MultipartFile imageFile, PhotoDto photoDto) {
         String returnValue = "start";
         try {
             this.service.saveImage(imageFile);
+            this.service.save(photoDto);
         } catch (Exception e) {
             e.printStackTrace();
             returnValue = "Error";
