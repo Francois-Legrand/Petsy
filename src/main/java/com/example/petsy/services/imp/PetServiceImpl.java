@@ -7,11 +7,13 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import com.example.petsy.dto.PetDescriptionDTO;
 import com.example.petsy.dto.PetFullDescriptionDTO;
 import com.example.petsy.models.Pet;
-import com.example.petsy.services.PetService;
+import com.example.petsy.services.IPetService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class PetServiceImpl implements PetService {
-
+public class PetServiceImpl implements IPetService {
+	/**
+	 * @author loose morgan
+	 */
 	private MongoRepository<Pet, String> repository;
 	private ObjectMapper mapper;
 
@@ -41,18 +43,21 @@ public class PetServiceImpl implements PetService {
 	}
 
 	@Override
-	public Pet findById(String id) {
-		return this.repository.findById(id).get();
+	public PetFullDescriptionDTO findById(String id) {
+		Pet pet = this.repository.findById(id).get();
+		return this.mapper.convertValue(pet, PetFullDescriptionDTO.class);
 	}
 
 	@Override
-	public Pet save(Pet pet) {
-		return this.repository.save(pet);
+	public PetFullDescriptionDTO save(PetFullDescriptionDTO petFullDescriptionDTO) {
+		Pet pet = this.mapper.convertValue(petFullDescriptionDTO, Pet.class);
+		return this.mapper.convertValue(this.repository.save(pet), PetFullDescriptionDTO.class);
 	}
 
 	@Override
-	public Pet update(String id, Pet entity) {
-		return this.repository.save(entity);
+	public PetFullDescriptionDTO update(String id, PetFullDescriptionDTO petFullDescriptionDTO) {
+		Pet pet = this.mapper.convertValue(petFullDescriptionDTO, Pet.class);
+		return this.mapper.convertValue(this.repository.save(pet), PetFullDescriptionDTO.class);
 	}
 
 	@Override

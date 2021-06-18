@@ -15,40 +15,42 @@ public class Petsy {
 	@DBRef
 	private Personne personne;
 	@DBRef
-	private List<PetsyLikesComments> petsyLikesComments = new ArrayList<PetsyLikesComments>(); 
-	
+	private List<PetsyLikesComments> petsyLikesComments = new ArrayList<PetsyLikesComments>();
+
 	public Petsy() {
-		super();
 	}
-	
+
 	public Petsy(String id, String contenu, Personne personne) {
-		super();
 		this.id = id;
 		this.contenu = contenu;
 		this.personne = personne;
 		this.petsyLikesComments = petsyLikesComments;
 	}
-	
 
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getContenu() {
 		return contenu;
 	}
+
 	public void setContenu(String contenu) {
 		this.contenu = contenu;
 	}
+
 	public Personne getPersonne() {
 		return personne;
 	}
+
 	public void setPersonne(Personne personne) {
 		this.personne = personne;
 	}
-	
+
 	public List<PetsyLikesComments> getPetsyLikesComments() {
 		return petsyLikesComments;
 	}
@@ -56,6 +58,5 @@ public class Petsy {
 	public void setPetsyLikesComments(List<PetsyLikesComments> petsyLikesComments) {
 		this.petsyLikesComments = petsyLikesComments;
 	}
-	
 
 }
