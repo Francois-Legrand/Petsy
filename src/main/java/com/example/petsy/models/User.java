@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.EqualsAndHashCode;
 
+
 @EqualsAndHashCode(callSuper = true)
 @Document(collection = "users")
 public class User extends Personne {

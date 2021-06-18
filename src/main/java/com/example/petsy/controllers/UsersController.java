@@ -6,6 +6,8 @@ import com.example.petsy.services.imp.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 
 /**
@@ -30,12 +32,15 @@ public class UsersController {
         return findByUsername(name);
     }
 
-   /* @PostMapping("/saveDTO/")
-    public UsersDTO saveDTO(@RequestBody UsersDTO usersDTO) { return service.saveDTO(usersDTO);}*/
-
     @PostMapping
-    public User save(@RequestBody User user){ return service.save(user);}
+    public UsersDTO save(@RequestBody UsersDTO usersDTO) throws NoSuchAlgorithmException, InvalidKeySpecException { return service.save(usersDTO);}
 
     @PutMapping
-    public User edit(@RequestBody User user){ return service.save(user);}
+    public UsersDTO edit(@RequestBody UsersDTO usersDTO) throws NoSuchAlgorithmException, InvalidKeySpecException {return service.save(usersDTO);}
+
+    /*@PostMapping
+    public User save(@RequestBody User user) throws NoSuchAlgorithmException, InvalidKeySpecException { return service.save(user);}
+
+    @PutMapping
+    public User edit(@RequestBody User user) throws NoSuchAlgorithmException, InvalidKeySpecException { return service.save(user);}*/
 }
