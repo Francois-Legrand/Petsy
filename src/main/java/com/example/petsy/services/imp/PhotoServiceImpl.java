@@ -5,7 +5,11 @@ import com.example.petsy.models.Photo;
 import com.example.petsy.repositories.IPhotoRepository;
 import com.example.petsy.services.IPhotoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,5 +47,16 @@ public class PhotoServiceImpl implements IPhotoService {
     @Override
     public void deleteById(String id) {
         this.repository.deleteById(id);
+    }
+
+    @Override
+    public PhotoDto saveImage(MultipartFile imageFile) throws Exception {
+        Photo photo = new Photo();
+        String folder = "./src/main/resources/images/";
+        byte[] bytes = imageFile.getBytes();
+        Path path = Paths.get(folder + imageFile.getOriginalFilename());
+        photo.setUrl(path.toString());
+        Files.write(path, bytes);
+        return mapper.convertValue(this.repository.save(photo), PhotoDto.class);
     }
 }

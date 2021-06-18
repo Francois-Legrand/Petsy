@@ -12,6 +12,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 public class PhotoDto {
     private String id;
-    private String chemin;
+    private String url;
     private Personne personne;
 }
