@@ -7,7 +7,10 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class PetFullDescriptionDTO {
-	
+	/**
+	 * @author loose morgan
+	 */
+	private String id;
 	private String nom;
 	private String race;
 	private int age;
