@@ -4,6 +4,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.example.petsy.models.Pet;
 
-public interface PetRepository extends MongoRepository<Pet, String> {
-
+public interface IPetRepository extends MongoRepository<Pet, String> {
+	/**
+	 * @author loose morgan
+	 */
 }

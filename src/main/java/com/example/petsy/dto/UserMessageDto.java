@@ -15,5 +15,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class UserMessageDto {
     private String id;
     private String message;
-    private User userId;
+    private User userId1;
+    private User userId2;
 }

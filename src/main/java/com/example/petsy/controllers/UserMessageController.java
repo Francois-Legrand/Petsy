@@ -2,6 +2,7 @@ package com.example.petsy.controllers;
 
 import com.example.petsy.dto.UserMessageDto;
 import com.example.petsy.dto.UsersDTO;
+import com.example.petsy.services.imp.UserMessageServiceImpl;
 import com.example.petsy.services.imp.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,10 +11,10 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("")
+@RequestMapping("messages")
 public class UserMessageController {
     @Autowired
-    UserServiceImpl service;
+    UserMessageServiceImpl service;
 
     @GetMapping
     public List<UserMessageDto> findAll(){
@@ -33,8 +34,8 @@ public class UserMessageController {
         this.service.deleteById(id);
     }
     @PostMapping
-    public void save(@RequestBody UserMessageDto userMessageDto){
-        return this.service.save(userMessageDto);
+    public UserMessageDto save(@RequestBody UserMessageDto userMessageDto){
+       return this.service.save(userMessageDto);
     }
 
 }

@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ *
+ */
 @RestController
 @CrossOrigin
 @RequestMapping("users")
@@ -27,11 +30,13 @@ public class UsersController {
         return findByUsername(name);
     }
 
-    @PostMapping("/saveDTO/")
+    @PostMapping
     public UsersDTO saveDTO(@RequestBody UsersDTO usersDTO) { return service.saveDTO(usersDTO);}
 
-    @PostMapping
+    /*@PostMapping
     public User save(@RequestBody User user){ return service.save(user);}
+
+     */
 
     @PutMapping
     public User edit(@RequestBody User user){ return service.save(user);}

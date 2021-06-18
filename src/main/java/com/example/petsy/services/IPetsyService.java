@@ -6,7 +6,7 @@ import com.example.petsy.dto.PetsyDto;
 import com.example.petsy.models.Petsy;
 
 public interface IPetsyService {
-	public PetsyDto create(Petsy petsy);
+	public PetsyDto create(PetsyDto petsyDto);
 	
 	
 	public PetsyDto findById(String id);
