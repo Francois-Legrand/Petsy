@@ -27,12 +27,12 @@ public class PetController {
 	@Autowired
 	private PetServiceImpl service;
 
-	@GetMapping("")
+	@GetMapping("/short")
 	public List<PetDescriptionDTO> findAllPartialDescription() {
 		return service.findAllPartialDescription();
 	}
 
-	@GetMapping("/description")
+	@GetMapping("/full")
 	public List<PetFullDescriptionDTO> findAll() {
 		return service.findAll();
 	}

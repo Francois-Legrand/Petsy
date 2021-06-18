@@ -21,7 +21,7 @@ public class Configs {
 	}
 
 	@Bean
-	PetServiceImpl petService(PetRepository PetRepository, ObjectMapper mapper) {
+	PetServiceImpl petService(IPetRepository PetRepository, ObjectMapper mapper) {
 		return new PetServiceImpl(PetRepository, mapper);
 	}
 
