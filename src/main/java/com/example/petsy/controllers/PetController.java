@@ -15,14 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.petsy.dto.PetDescriptionDTO;
 import com.example.petsy.dto.PetFullDescriptionDTO;
-import com.example.petsy.models.Pet;
 import com.example.petsy.services.imp.PetServiceImpl;
 
 @RestController
 @RequestMapping("pets")
 @CrossOrigin
 public class PetController {
-
+/**
+ * @author loose morgan
+ */
 	@Autowired
 	private PetServiceImpl service;
 
@@ -37,22 +38,23 @@ public class PetController {
 	}
 
 	@GetMapping("{id}")
-	public Pet findById(@PathVariable String id) {
+	public PetFullDescriptionDTO findById(@PathVariable String id) {
 		return service.findById(id);
 	}
 
 	@PutMapping("")
-	public Pet update(@RequestBody Pet pet) {
-		return service.save(pet);
+	public PetFullDescriptionDTO update(@RequestBody PetFullDescriptionDTO petFullDescriptionDTO) {
+		return service.save(petFullDescriptionDTO);
 	}
 
 	@PostMapping("")
-	public Pet save(@RequestBody Pet pet) {
-		return service.save(pet);
+	public PetFullDescriptionDTO save(@RequestBody PetFullDescriptionDTO petFullDescriptionDTO) {
+		return service.save(petFullDescriptionDTO);
 	}
 
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable String id) {
 		service.delete(id);
 	}
+	
 }
