@@ -44,16 +44,21 @@ public class PetsyServiceImpl implements IPetsyService {
 		return mapper.convertValue(petsy, PetsyDto.class);
 	}
 
-	@Override
-	public PetsyDto update(String id, Petsy petsy) {
-		this.repository.save(petsy);	
-		return this.mapper.convertValue(petsy, PetsyDto.class);
+	public PetsyDto update(PetsyDto petsyDto) {
+		Petsy petsy = mapper.convertValue(petsyDto, Petsy.class);
+        return mapper.convertValue(this.repository.save(petsy), PetsyDto.class);
 	}
 
 	@Override
 	public void delete(String id) {
 		this.repository.deleteById(id);
 		
+	}
+
+	@Override
+	public PetsyDto update(String id, Petsy petsy) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
