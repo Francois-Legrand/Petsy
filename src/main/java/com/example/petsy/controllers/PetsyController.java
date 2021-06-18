@@ -38,8 +38,8 @@ public class PetsyController {
 	}
 
 	@PutMapping
-	public PetsyDto create(@RequestBody Petsy petsy) {
-		return service.create(petsy);
+	public PetsyDto createDto(@RequestBody PetsyDto petsyDto) {
+		return service.create(petsyDto);
 	}
 
 	@DeleteMapping

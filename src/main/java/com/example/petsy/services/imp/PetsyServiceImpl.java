@@ -21,9 +21,9 @@ public class PetsyServiceImpl implements IPetsyService {
 	}
 
 	@Override
-	public PetsyDto create(Petsy petsy) {
-		this.repository.save(petsy);
-		return mapper.convertValue(petsy, PetsyDto.class);
+	public PetsyDto create(PetsyDto petsyDto) {
+		Petsy petsy = mapper.convertValue(petsyDto, Petsy.class);
+        return mapper.convertValue(this.repository.save(petsy), PetsyDto.class);
 	}
 	
 	@Override
