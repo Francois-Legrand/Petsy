@@ -24,7 +24,7 @@ public class Petsy {
 		this.id = id;
 		this.contenu = contenu;
 		this.personne = personne;
-		this.petsyLikesComments = petsyLikesComments;
+		
 	}
 
 	public String getId() {

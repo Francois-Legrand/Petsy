@@ -1,7 +1,7 @@
 package com.example.petsy.controllers;
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,14 +14,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.petsy.dto.PetFullDescriptionDTO;
 import com.example.petsy.dto.PetsyDto;
-import com.example.petsy.models.Petsy;
-import com.example.petsy.services.IPetsyService;
 import com.example.petsy.services.imp.PetsyServiceImpl;
 
 @RestController
 @CrossOrigin
-@RequestMapping("petsy's")
+@RequestMapping("petsys")
 public class PetsyController {
 
 	@Autowired
@@ -36,11 +35,17 @@ public class PetsyController {
 	public PetsyDto recupPetsyServiceId(@PathVariable String id) {
 		return service.findById(id);
 	}
+	
+	@PutMapping("")
+	public PetsyDto update(@RequestBody PetsyDto petsyDto) {
+		return service.update(petsyDto);
+	}
 
-	@PutMapping
-	public PetsyDto createDto(@RequestBody PetsyDto petsyDto) {
+	@PostMapping
+	public PetsyDto create(@RequestBody PetsyDto petsyDto) {
 		return service.create(petsyDto);
 	}
+	
 
 	@DeleteMapping
 	public void delete(@PathVariable String id) {
