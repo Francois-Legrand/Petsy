@@ -1,20 +1,24 @@
 package com.example.petsy.models;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Data
-@Document
-@AllArgsConstructor
+@Document(collection = "evenements")
 @NoArgsConstructor
-public class Photo {
-    @Id
-    private String id;
-    private String url;
+@AllArgsConstructor
+public class Event {
+
+    String id;
+    String title;
+    String description;
+
     @DBRef
-    private Personne personne;
+    private List<User> users;
 }
