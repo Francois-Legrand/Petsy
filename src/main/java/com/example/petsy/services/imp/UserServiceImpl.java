@@ -42,6 +42,11 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public UsersDTO findByUsername(String name) {
+        return mapper.convertValue(this.repository.findByUsername(name).get(), UsersDTO.class);
+    }
+
+    @Override
     public UsersDTO save(UsersDTO usersDTO) throws NoSuchAlgorithmException, InvalidKeySpecException {
         User user = mapper.convertValue(usersDTO, User.class);
         SecureRandom random = new SecureRandom();
@@ -68,6 +73,11 @@ public class UserServiceImpl implements IUserService {
         }
         user.setPassword(Arrays.toString(hash));
         return mapper.convertValue(this.repository.save(user), UsersDTO.class);
+    }
+
+    @Override
+    public void deleteById(String id) {
+        this.repository.deleteById(id);
     }
 /*
     Version save sur User
@@ -99,9 +109,4 @@ public class UserServiceImpl implements IUserService {
         return this.repository.save(user);
     }
 */
-
-    @Override
-    public void deleteById(String id) {
-        this.repository.deleteById(id);
-    }
 }
