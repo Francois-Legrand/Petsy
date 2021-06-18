@@ -1,24 +1,29 @@
 package com.example.petsy.models;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.util.Lazy;
 
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
+@Data
 @Document(collection = "users")
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends Personne{
+public class User extends Personne {
 
     String username;
     String password;
 
     /*
-    ManyToMany avec la classe personne. Doit-on vraiment la faire?
+    Reference a personne
      */
-    @DBRef
-    private List<Personne> personnes_ids;
+    @DBRef(lazy = true)         // Permet d'eviter la recursivite
+    private List<Personne> personnes;
+
 }

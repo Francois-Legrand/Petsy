@@ -1,5 +1,8 @@
 package com.example.petsy.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,17 +14,22 @@ public class Petsy {
 	private String contenu;
 	@DBRef
 	private Personne personne;
-	
+	@DBRef
+	private List<PetsyLikesComments> petsyLikesComments = new ArrayList<PetsyLikesComments>(); 
 	
 	public Petsy() {
 		super();
 	}
+	
 	public Petsy(String id, String contenu, Personne personne) {
 		super();
 		this.id = id;
 		this.contenu = contenu;
 		this.personne = personne;
+		this.petsyLikesComments = petsyLikesComments;
 	}
+	
+
 	public String getId() {
 		return id;
 	}
@@ -39,6 +47,14 @@ public class Petsy {
 	}
 	public void setPersonne(Personne personne) {
 		this.personne = personne;
+	}
+	
+	public List<PetsyLikesComments> getPetsyLikesComments() {
+		return petsyLikesComments;
+	}
+
+	public void setPetsyLikesComments(List<PetsyLikesComments> petsyLikesComments) {
+		this.petsyLikesComments = petsyLikesComments;
 	}
 	
 
