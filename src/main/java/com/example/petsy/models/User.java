@@ -26,4 +26,6 @@ public class User extends Personne {
     @DBRef(lazy = true)         // Permet d'eviter la recursivite
     private List<Personne> personnes;
 
+    @DBRef
+    private List<Event> events;
 }

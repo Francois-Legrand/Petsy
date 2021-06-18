@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor          //NE PAS OUBLIER LE NoArgsConstructor
-public class UsersDTO
-{
-    private String username;
+@NoArgsConstructor
+public class EventDTO {
+    String title;
+    String description;
 }
