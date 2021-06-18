@@ -1,11 +1,8 @@
 package com.example.petsy.config;
 
-import com.example.petsy.repositories.IPhotoRepository;
-import com.example.petsy.repositories.IUserRepository;
-import com.example.petsy.repositories.PetRepository;
-import com.example.petsy.services.imp.PetServiceImpl;
-import com.example.petsy.services.imp.PhotoServiceImpl;
-import com.example.petsy.services.imp.UserServiceImpl;
+import com.example.petsy.models.Pet;
+import com.example.petsy.repositories.*;
+import com.example.petsy.services.imp.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,5 +22,14 @@ public class Configs {
 	@Bean
 	PetServiceImpl petService(PetRepository PetRepository, ObjectMapper mapper) {
 		return new PetServiceImpl(PetRepository, mapper);
+	}
+
+	@Bean
+	PetsyServiceImpl petsyService(PetsyRepository petsyRepository, ObjectMapper mapper){
+		return new PetsyServiceImpl(petsyRepository, mapper);
+	}
+	@Bean
+	PetsyLikesCommentsServiceImpl petsyLikesCommentsService(IPetsyLikesCommentsRepository petsyLikesCommentsRepository, ObjectMapper mapper){
+		return new PetsyLikesCommentsServiceImpl(petsyLikesCommentsRepository, mapper);
 	}
 }
